@@ -1,5 +1,7 @@
 import Joi from "joi";
 
+// Schemas used in the auth.router.ts file for validation
+
 export const loginSchema = Joi.object({
   username: Joi.string().required(),
   password: Joi.string().required(),

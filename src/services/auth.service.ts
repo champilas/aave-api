@@ -12,6 +12,7 @@ export default class AuthService {
 
     public async login(username: string, password: string) {
 
+        // checking if user exists or is active
         const user = await sequelize.models.User.findOne({ 
             where: { username },
             include: [
@@ -58,6 +59,8 @@ export default class AuthService {
     }
 
     public async autoSignIn(userId: string) {
+
+        // Checking if user exists
         const user = await sequelize.models.User.findByPk(userId);
         if (!user) {
             throw boom.notFound('User not found');

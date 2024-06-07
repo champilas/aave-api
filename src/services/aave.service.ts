@@ -31,6 +31,7 @@ export default class AaveService {
 
     public async deposit(userId: string, address: string, amount: string, signature: string) {
         
+        // Checking if wallet exists
         const wallet = await sequelize.models.Wallet.findOne({ where: { address, userId } });
         if (!wallet) {
             throw boom.notFound('Wallet not found for this user');
@@ -50,6 +51,7 @@ export default class AaveService {
 
     public async withdraw(userId: string, address: string, amount: string) {
 
+        // Checking if wallet exists
         const wallet = await sequelize.models.Wallet.findOne({ where: { address, userId } });
         if (!wallet) {
             throw boom.notFound('Wallet not found for this user');

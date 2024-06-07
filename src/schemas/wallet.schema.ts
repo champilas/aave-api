@@ -1,6 +1,8 @@
 import Joi from "joi";
 import { DEFAULT_PAGE, DEFAULT_PAGE_SIZE } from "../utils/constants";
 
+// Schemas used in the wallet.router.ts file for validation
+
 export const createWalletSchema = Joi.object({
     alias: Joi.string().optional().allow(''),
     address: Joi.string().regex(/^0x[a-fA-F0-9]{40}$/).required(),

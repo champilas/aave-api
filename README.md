@@ -78,3 +78,27 @@ The examples and basic call API calls are contained in Swagger.
 ### Accessing pgAdmin
 
 pgAdmin is included in the Docker setup for easy database management. You can access it by navigating to `http://localhost:5050` in your web browser. Use the credentials provided in your `docker-compose-dev.yml` or the .env file to log in.
+
+## Logs
+
+### Logging with Winston
+
+This project uses Winston for logging. Logs are generated and stored in an external file for easier monitoring and debugging. Logs are also rotated daily and archived to manage log file size and retention.
+
+### Log Configuration
+
+The Winston logger is configured to write logs to daily rotated files located in the `logs` directory. You can find the configuration in the logging setup of the project.
+
+### Log Files
+
+- **Daily Rotated Logs**: Logs are stored in `logs/application-%DATE%.log`, where `%DATE%` is replaced with the current date.
+- **Console Logs**: Logs are also output to the console.
+
+### Accessing Logs
+
+You can access the log files by navigating to the `logs` directory in the project root. Here are the steps to view the logs:
+
+1. **Daily Rotated Logs**:
+    ```sh
+    cat logs/application-YYYY-MM-DD.log
+    ```

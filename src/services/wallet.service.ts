@@ -27,6 +27,7 @@ export default class WalletService {
         return wallet;
     }
 
+    // Generate a nonce for the wallet for verification
     public async generateNonce(userId: string, address: string) {
         address = address.toLowerCase();
         const wallet = await this.getWallet(userId, address);
@@ -57,6 +58,7 @@ export default class WalletService {
         return newWallet;
     }
 
+    // Verify wallet, checking if the signature is correct
     public async verifyWallet(address: string, nonce: string, signature: string) {
         address = address.toLowerCase();
         const wallet = await sequelize.models.Wallet.findOne({ where: { address } });
@@ -79,6 +81,7 @@ export default class WalletService {
         return updatedWallet;
     }
 
+    // Update wallet alias, only alias is allowed to be updated
     public async updateWallet(userId: string, address: string, alias: string) {
         address = address.toLowerCase();
         const wallet = await sequelize.models.Wallet.findOne({ where: { address, userId } });
@@ -89,6 +92,7 @@ export default class WalletService {
         return updatedWallet;
     }
 
+    // Delete wallet, only wallet with more than one wallet is allowed to be deleted
     public async deleteWallet(userId: string, address: string) {
         address = address.toLowerCase();
 

@@ -22,6 +22,7 @@ app.use(cors(corsOptions));
 
 routes(app);
 
+// Adding middleware to handle errors.
 app.use(logUndefinedRoutes);
 app.use(logErrors);
 app.use(ormErrorHandler)
